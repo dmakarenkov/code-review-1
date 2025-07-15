@@ -12,10 +12,12 @@ public class DocumentImportService {
 
     private boolean isRunning = false;
 
-    public void processFiles(File inputFolder) {
+    public void processFiles() {
         if (!isRunning) {
             isRunning = true;
-            for (File file : inputFolder.listFiles()) {
+
+            File sourceFolder = new File("/source-files");
+            for (File file : sourceFolder.listFiles()) {
                 DocumentProcessor processor = new DocumentProcessor(file, documentRepository);
                 processor.run();
             }
